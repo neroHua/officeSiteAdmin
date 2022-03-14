@@ -1,8 +1,8 @@
 {
-  "name": "y",
+  "name": "officeSiteAdmin",
   "version": "1.0.0",
-  "description": "y",
-  "author": "y",
+  "description": "officeSiteAdmin",
+  "author": "neroHua",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -18,6 +18,7 @@
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
+    "axios": "^0.18.0",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^8.2.1",
