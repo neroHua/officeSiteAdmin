@@ -1,23 +1,27 @@
 <template>
-    <form>
-        <p>
-            用户名
-            <input
-            type="number"
-            name="userId"
-            v-model="loginForm.userId"
-            />
-        </p>
-        <p>
-            密码
-            <input
-            type="password"
-            name="password"
-            v-model="loginForm.password"
-            />
-        </p>
-        <button type="button" v-on:click="login">登录</button>
-    </form>
+  <div id="loginDiv">
+    <Card style="width:300px" id="loginCard" title="欢迎登陆">
+      <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="login" label-position="right">
+        <FormItem prop="userId">
+          <Input v-model="loginForm.userId" placeholder="请输入用户id">
+            <span slot="prepend">
+              <Icon :size="16" type="ios-person"></Icon>
+            </span>
+          </Input>
+        </FormItem>
+        <FormItem prop="password">
+          <Input type="password" v-model="loginForm.password" placeholder="请输入密码">
+            <span slot="prepend">
+              <Icon :size="14" type="md-lock"></Icon>
+            </span>
+          </Input>
+        </FormItem>
+        <FormItem>
+          <Button @click="login" type="primary" long>登录</Button>
+        </FormItem>
+      </Form>
+    </Card>
+  </div>
 </template>
 <script>
 import axios from 'axios'
@@ -52,3 +56,17 @@ export default {
   }
 }
 </script>
+<style scoped>
+#loginDiv {
+  width: 100%;
+  height: 100%;
+  background-color: #5cadff;
+}
+
+#loginCard {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+}
+
+</style>
