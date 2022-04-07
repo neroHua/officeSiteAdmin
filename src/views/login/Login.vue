@@ -1,7 +1,7 @@
 <template>
   <div id="loginDiv">
     <Card style="width:300px" id="loginCard" title="欢迎登陆">
-      <Form ref="loginForm" :model="form" :rules="rules" @keydown.enter.native="login" label-position="right">
+      <Form :model="loginForm" :rules="rules" @keydown.enter.native="login" label-position="right">
         <FormItem prop="userId">
           <Input v-model="loginForm.userId" placeholder="请输入用户id"/>
             <span slot="prepend">
@@ -21,36 +21,44 @@
     </Card>
   </div>
 </template>
+
 <script>
-import axios from 'axios'
+import { loginService } from '../../service/login/login.js'
 export default {
   name: 'LoginForm',
-  data () {
-    return {
-      loginForm: {
-        userId: 1,
-        password: 'abc123',
-      },
-    }
+  data: () => ({
+    loginForm: {
+      userId: 1,
+      password: 'abc123',
+    },
+  }),
+  computed: {
+    rules () {
+      return {
+        userId: {
+          required: true,
+          message: '账号不能为空',
+          trigger: 'blur'
+        },
+        password: {
+          required: true,
+          message: '密码不能为空',
+          trigger: 'blur'
+        },
+      }
+    },
   },
   methods: {
     login() {
-      axios
-        .post('/login',
-        JSON.stringify(this.loginForm),
-        {
-          headers: {
-            'content-Type': 'application/json;charset=utf-8'
-          }
-        })
-        .then(response => (
+      loginService(this.loginForm)
+        .then(successResponse => (
           this.$router.push('/news')
         ))
         .catch(failResponse => {
-          alert('系统繁忙')
+          console.log(failResponse)
         })
     },
-  }
+  },
 }
 </script>
 <style scoped>
