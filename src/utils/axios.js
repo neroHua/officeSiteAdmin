@@ -58,6 +58,6 @@ export function post(url, data = {}, headers = {'Content-Type':'application/json
 }
 
 export default {
-	get,
+  get,
   post,
 }
