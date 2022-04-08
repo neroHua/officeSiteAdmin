@@ -1,11 +1,15 @@
 <template>
-  <Layout id="pageLayout">
-    <Header>新闻列表页</Header>
-    <Content>
-      <Table :columns="columns" :data="data"></Table>
-    </Content>
-    <Footer>新闻列表页</Footer>
-  </Layout>
+  <div id="allDiv">
+    <div id="navDiv">
+      <Menu :theme="theme3" active-name="1">
+        <MenuGroup title="新闻管理">
+        </MenuGroup>
+      </Menu>
+    </div>
+    <div class="contentDiv">
+        <Table :columns="columns" :data="data"></Table>
+    </div>
+  </div>
 </template>
 <script>
 import { newsListService } from '../../service/news/newsService.js'
@@ -78,8 +82,17 @@ export default {
 }
 </script>
 <style scoped>
-#pageLayout{
+#allDiv{
   height: 100%;
+}
+
+#navDiv{
+  float: left;
+  width: 240px;
+}
+
+.contentDiv{
+  margin-left: 240px;
 }
 
 </style>
