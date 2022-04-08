@@ -8,7 +8,7 @@ let httpService = axios.create({
 
 // 拦截请求
 httpService.interceptors.request.use(config => {
-
+  return config;
 },err => {
   Promise.reject(err);
 })
