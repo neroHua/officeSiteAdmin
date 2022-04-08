@@ -8,18 +8,13 @@ let httpService = axios.create({
 
 // 拦截请求
 httpService.interceptors.request.use(config => {
-  if (localStorage.getItem('token')) {
-    config.headers.token = localStorage.getItem('token')
-  }
-  return config;
+
 },err => {
   Promise.reject(err);
 })
 
 // 拦截响应
 httpService.interceptors.response.use(response => {
-  console.log(response)
-  console.log('请求成功')
   return response;
 },err => {
   return Promise.reject(err);
