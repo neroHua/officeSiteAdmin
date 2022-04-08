@@ -8,7 +8,7 @@
   </Layout>
 </template>
 <script>
-import axios from 'axios'
+import { newsListService } from '../../service/news/newsService.js'
 export default {
   data () {
     return {
@@ -63,9 +63,18 @@ export default {
       ]
     }
   },
+  mounted: function() {
+    newsListService({pageSize: 10, pageNumber: 1})
+      .then(successResponse => (
+        this.data = successResponse.data.dataList
+      ))
+      .catch(failResponse => {
+        console.log(failResponse)
+      })
+  },
   methods: {
 
-  }
+  },
 }
 </script>
 <style scoped>
