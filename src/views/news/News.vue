@@ -9,7 +9,7 @@
     <div class="contentDiv">
         <Button type="primary" @click="addNews">新增新闻</Button>
         <Table :columns="columns" :data="data"></Table>
-        <NewsAdd></NewsAdd>
+        <NewsAdd :show="newsAddProps.show"></NewsAdd>
     </div>
   </div>
 
@@ -72,6 +72,9 @@ export default {
           cover: 'd://image'
         },
       ],
+      newsAddProps: {
+        show: false,
+      }
     }
   },
   mounted: function() {
@@ -85,6 +88,7 @@ export default {
   },
   methods: {
     addNews: function() {
+      this.newsAddProps.show = true;
     }
   },
 }
