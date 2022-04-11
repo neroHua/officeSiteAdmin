@@ -7,12 +7,11 @@
       </Menu>
     </div>
     <div class="contentDiv">
-        <Button type="primary" @click="addNews">新增新闻</Button>
+        <Button type="primary" @click="openNewsAdd">新增新闻</Button>
         <Table :columns="columns" :data="data"></Table>
-        <NewsAdd :show="newsAddProps.show"></NewsAdd>
+        <NewsAdd :show="newsAddProps.show" :showCallBack="newsAddShowCallBack"></NewsAdd>
     </div>
   </div>
-
 </template>
 <script>
 import { newsListService } from '../../service/news/newsService.js'
@@ -87,9 +86,12 @@ export default {
       })
   },
   methods: {
-    addNews: function() {
+    openNewsAdd: function() {
       this.newsAddProps.show = true;
-    }
+    },
+    newsAddShowCallBack: function(childShow) {
+      this.newsAddProps.show = childShow;
+    },
   },
 }
 </script>
