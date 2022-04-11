@@ -53,6 +53,9 @@ export default {
       required: false,
       default: '新增新闻',
     },
+    showCallBack: {
+      type: Function,
+    },
   },
   data() {
     return {
@@ -75,33 +78,24 @@ export default {
   watch: {
     show: {
       handler(newValue, oldValue) {
-        console.log('show', oldValue, '->', newValue)
         this.showTemp = this.show;
       },
       immediate: true,
-      deep: true,
+      deep: false,
     },
     title: {
       handler(newValue, oldValue) {
-        console.log('title', oldValue, '->', newValue)
         this.titleTemp = this.title;
       },
       immediate: true,
-      deep: true,
+      deep: false,
     },
     showTemp: {
       handler(newValue, oldValue) {
-        console.log('showTemp', oldValue, '->', newValue)
+        this.showCallBack(newValue)
       },
       immediate: true,
-      deep: true,
-    },
-    titleTemp: {
-      handler(newValue, oldValue) {
-        console.log('titleTemp', oldValue, '->', newValue)
-      },
-      immediate: true,
-      deep: true,
+      deep: false,
     },
   },
 };
