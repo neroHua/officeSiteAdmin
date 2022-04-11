@@ -1,19 +1,26 @@
 <template>
   <div id="allDiv">
     <div id="navDiv">
-      <Menu :theme="theme3" active-name="1">
+      <Menu active-name="1">
         <MenuGroup title="新闻管理">
         </MenuGroup>
       </Menu>
     </div>
     <div class="contentDiv">
+        <Button type="primary" @click="addNews">新增新闻</Button>
         <Table :columns="columns" :data="data"></Table>
+        <NewsAdd></NewsAdd>
     </div>
   </div>
+
 </template>
 <script>
 import { newsListService } from '../../service/news/newsService.js'
+import NewsAdd from "@/views/news/components/NewsAdd"
 export default {
+  components: {
+    NewsAdd ,
+  },
   data () {
     return {
       columns: [
@@ -64,7 +71,7 @@ export default {
           createUserId: 1,
           cover: 'd://image'
         },
-      ]
+      ],
     }
   },
   mounted: function() {
@@ -77,7 +84,8 @@ export default {
       })
   },
   methods: {
-
+    addNews: function() {
+    }
   },
 }
 </script>
@@ -94,5 +102,4 @@ export default {
 .contentDiv{
   margin-left: 240px;
 }
-
 </style>
