@@ -49,7 +49,6 @@ export default {
     showCallBack: {
     },
     newsAddSubmit: {
-
     },
   },
   data() {
@@ -95,6 +94,19 @@ export default {
   },
   mounted() {
     this.editor = new Editor(`#editorId`)
+    this.editor.config.customUploadImg = function (files, insert) {
+      let formData = new FormData()
+      formData.append('file', files[0])
+      uploadImageService(formData)
+        .then(successResponse => {
+          console.log(successResponse.data.data)
+          insert(successResponse.data.data)
+        })
+        .catch(failResponse => {
+          console.log(failResponse)
+        })
+    }
+
     this.editor.create()
   },
   methods: {
@@ -104,7 +116,7 @@ export default {
       formData.append('file', cover)
       uploadImageService(formData)
         .then(successResponse => {
-          this.formData.cover=successResponse.data.data
+          this.formData.cover = successResponse.data.data
         })
         .catch(failResponse => {
           console.log(failResponse)
