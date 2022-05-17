@@ -5,7 +5,6 @@
     width="80%"
     :mask-closable="true"
     :styles="styles"
-    
   >
     <Form :model="formData">
       <Row :gutter="32">
@@ -18,10 +17,9 @@
           </FormItem>
         <Col span="12" />
           <Upload :before-upload="handleBeforeUploadCover" action="//jsonplaceholder.typicode.com/posts/">
-            <Button icon="ios-cloud-upload-outline">请上传封面</Button>
+            <Button icon="ios-cloud-upload-outline" v-if="!formData.cover">请上传封面</Button>
             <img :src="formData.cover" v-if="formData.cover">
           </Upload>
-            <Button @click="handleUploadCover">确认上传</Button>
       </Row>
     </Form>
       <div class="editor-wrapper">
@@ -29,7 +27,7 @@
       </div>
     <div class="demo-drawer-footer">
       <Button style="margin-right: 8px" @click="showTemp = false">Cancel</Button>
-      <Button type="primary" @click=" showTemp = false">Submit</Button>
+      <Button type="primary" @click="handlerSubmit">Submit</Button>
     </div>
   </Drawer>
 </template>
@@ -50,6 +48,9 @@ export default {
     },
     showCallBack: {
     },
+    newsAddSubmit: {
+
+    },
   },
   data() {
     return {
@@ -63,10 +64,8 @@ export default {
         width: '100%',
       },
       formData: {
-        title: '', 
-        cover: 'http://localhost:8082/image/1652064940372chrome_WAaurZyh81.png',
-        coverData: null,
-        coverFile: null,
+        title: '测试标题1', 
+        cover: null,
         body: '',
       },
     };
@@ -103,11 +102,8 @@ export default {
   methods: {
     handleBeforeUploadCover: function(cover) {
       this.formData.coverFile = cover
-      return false;
-    },
-    handleUploadCover: function() {
       let formData = new FormData()
-      formData.append('file', this.formData.coverFile)
+      formData.append('file', cover)
       uploadImageService(formData)
         .then(successResponse => {
           this.formData.cover=successResponse.data.data
@@ -115,8 +111,10 @@ export default {
         .catch(failResponse => {
           console.log(failResponse)
         })
+      return false;
     },
     handlerSubmit: function() {
+      this.newsAddSubmit(this.formData)
     },
   }
 };
