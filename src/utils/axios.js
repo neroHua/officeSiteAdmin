@@ -52,7 +52,23 @@ export function post(url, data = {}, headers = {'Content-Type':'application/json
   })
 }
 
+// post请求封装 
+export function upload(url, data = {}) {
+  return new Promise((resolve,reject) => {
+    httpService({
+      url: url,
+      method: 'post',
+      data: data,
+    }).then(res => {
+      resolve(res);
+    }).catch(err => {
+      reject(err);
+    })
+  })
+}
+
 export default {
   get,
   post,
+  upload,
 }
