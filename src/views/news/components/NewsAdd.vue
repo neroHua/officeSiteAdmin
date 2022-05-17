@@ -17,9 +17,11 @@
             />
           </FormItem>
         <Col span="12" />
-          <Upload :before-upload="handleUploadCover" action="//jsonplaceholder.typicode.com/posts/">
+          <Upload :before-upload="handleBeforeUploadCover" action="//jsonplaceholder.typicode.com/posts/">
             <Button icon="ios-cloud-upload-outline">请上传封面</Button>
+            <img :src="formData.cover" v-if="formData.cover">
           </Upload>
+            <Button @click="handleUploadCover">确认上传</Button>
       </Row>
     </Form>
       <div class="editor-wrapper">
@@ -34,7 +36,7 @@
 
 <script>
 import Editor from 'wangeditor'
-// import 'wangeditor/release/wangEditor.min.css'
+import { uploadImageService } from '../../../service/image/imageService.js'
 export default {
   name: "NewsAdd",
   props: {
@@ -62,7 +64,9 @@ export default {
       },
       formData: {
         title: '', 
-        cover: '',
+        cover: 'http://localhost:8082/image/1652064940372chrome_WAaurZyh81.png',
+        coverData: null,
+        coverFile: null,
         body: '',
       },
     };
@@ -92,15 +96,27 @@ export default {
   },
   mounted() {
     this.editor = new Editor(`#editorId`)
-    // this.editor.customConfig.onchangeTimeout = 200
     this.editor.create()
     let html = this.value || localStorage.editorCache
     if (html) this.editor.txt.html(html)
   },
   methods: {
-    handleUploadCover: function(cover) {
-      this.formData.cover = cover
+    handleBeforeUploadCover: function(cover) {
+      this.formData.coverFile = cover
       return false;
+    },
+    handleUploadCover: function() {
+      let formData = new FormData()
+      formData.append('file', this.formData.coverFile)
+      uploadImageService(formData)
+        .then(successResponse => {
+          this.formData.cover=successResponse.data.data
+        })
+        .catch(failResponse => {
+          console.log(failResponse)
+        })
+    },
+    handlerSubmit: function() {
     },
   }
 };
@@ -110,5 +126,4 @@ export default {
 .ivu-drawer-body {
   width: 900px;
 }
-
 </style>
