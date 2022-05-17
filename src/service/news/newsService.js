@@ -7,6 +7,13 @@ export function newsListService(data) {
   )
 }
 
+export function newsAddService(data) {
+  return post(
+    '/news',
+    data,
+  )
+}
+
 export default {
 	newsListService
 }
