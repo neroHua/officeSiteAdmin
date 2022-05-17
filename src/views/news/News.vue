@@ -9,12 +9,12 @@
     <div class="contentDiv">
         <Button type="primary" @click="openNewsAdd">新增新闻</Button>
         <Table :columns="columns" :data="data"></Table>
-        <NewsAdd :show="newsAddProps.show" :showCallBack="newsAddShowCallBack"></NewsAdd>
+        <NewsAdd :show="newsAddProps.show" :showCallBack="newsAddShowCallBack" :newsAddSubmit="newsAddSubmit"></NewsAdd>
     </div>
   </div>
 </template>
 <script>
-import { newsListService } from '../../service/news/newsService.js'
+import { newsListService, newsAddService } from '../../service/news/newsService.js'
 import NewsAdd from "@/views/news/components/NewsAdd"
 export default {
   components: {
@@ -78,20 +78,41 @@ export default {
   },
   mounted: function() {
     newsListService({pageSize: 10, pageNumber: 1})
-      .then(successResponse => (
-        this.data = successResponse.data.dataList
-      ))
+      .then(successResponse => {
+        console.log(successResponse)
+        this.data = successResponse.data.data.dataList
+      })
       .catch(failResponse => {
         console.log(failResponse)
       })
   },
   methods: {
     openNewsAdd: function() {
-      this.newsAddProps.show = true;
+      this.newsAddProps.show = true
     },
     newsAddShowCallBack: function(childShow) {
-      this.newsAddProps.show = childShow;
+      this.newsAddProps.show = childShow
     },
+    newsAddSubmit: function(formData) {
+      newsAddService(formData)
+      .then(successResponse => {
+        this.$Message.info('新增新闻成功')
+        this.newsAddProps.show = false
+      })
+      .catch(failResponse => {
+        console.log(failResponse)
+      })
+
+      newsListService({pageSize: 10, pageNumber: 1})
+      .then(successResponse => {
+        console.log(successResponse)
+        this.data = successResponse.data.data.dataList
+      })
+      .catch(failResponse => {
+        console.log(failResponse)
+      })
+
+    }
   },
 }
 </script>
