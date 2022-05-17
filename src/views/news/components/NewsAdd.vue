@@ -96,8 +96,6 @@ export default {
   mounted() {
     this.editor = new Editor(`#editorId`)
     this.editor.create()
-    let html = this.value || localStorage.editorCache
-    if (html) this.editor.txt.html(html)
   },
   methods: {
     handleBeforeUploadCover: function(cover) {
@@ -114,6 +112,7 @@ export default {
       return false;
     },
     handlerSubmit: function() {
+      this.formData.body = this.editor.txt.html()
       this.newsAddSubmit(this.formData)
     },
   }
