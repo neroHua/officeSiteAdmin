@@ -41,7 +41,7 @@
       </Row>
       <Row>
         <div class="editor-wrapper">
-          <div id="editorId"></div>
+          <div id="newsAddEditorId"></div>
         </div>
       </Row>
       <Row>
@@ -116,7 +116,7 @@ export default {
     },
   },
   mounted() {
-    this.editor = new Editor(`#editorId`)
+    this.editor = new Editor(`#newsAddEditorId`)
     this.editor.config.customUploadImg = function (files, insert) {
       let formData = new FormData()
       formData.append('file', files[0])
