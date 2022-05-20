@@ -131,7 +131,7 @@ export default {
       newsUpdateService(formData)
       .then(successResponse => {
         this.$Message.info('修改新闻成功')
-        this.newsAddProps.show = false
+        this.newsUpdateProps.show = false
       })
       .catch(failResponse => {
         console.log(failResponse)
