@@ -1,4 +1,4 @@
-import {get, post} from '../../utils/axios.js'
+import {get, post, put} from '../../utils/axios.js'
 
 export function newsListService(data) {
   return get(
@@ -14,6 +14,22 @@ export function newsAddService(data) {
   )
 }
 
+export function newsUpdateService(data) {
+  return put(
+    '/news',
+    data,
+  )
+}
+
+export function newsDetailService(data) {
+  return get(
+    '/news/detail/' + data,
+  )
+}
+
 export default {
-	newsListService
+	newsListService,
+  newsAddService,
+  newsUpdateService,
+  newsDetailService,
 }
