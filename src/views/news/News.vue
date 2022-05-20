@@ -121,7 +121,6 @@ export default {
       })
     },
     openNewsUpdate: function(params) {
-      console.log(params);
       this.newsUpdateProps.show = true
       this.newsUpdateProps.data = params 
     },
