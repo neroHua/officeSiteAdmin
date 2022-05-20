@@ -89,6 +89,7 @@ export default {
         width: '100%',
       },
       formData: {
+        id: '',
         title: '', 
         cover: '',
         body: '',
@@ -109,6 +110,7 @@ export default {
           return;
         }
         this.formData = {
+          id: newValue.id,
           title: newValue.title,
           cover: newValue.cover,
           body: newValue.detailId,
@@ -118,6 +120,14 @@ export default {
       immediate: true,
       deep: false,
     },
+    showTemp: {
+      handler(newValue, oldValue) {
+        this.showCallBack(newValue)
+      },
+      immediate: true,
+      deep: false,
+    },
+
   },
   mounted() {
     this.editor = new Editor(`#newsUpdateEditorId`)
@@ -155,6 +165,7 @@ export default {
     handlerSubmit: function () {
       this.formData.body = this.editor.txt.html();
       this.newsAddSubmit(this.formData);
+      this.newsUpdateSubmit(this.formData);
     },
     handlerFindDetail: function (detailId) {
       newsDetailService(detailId) 
