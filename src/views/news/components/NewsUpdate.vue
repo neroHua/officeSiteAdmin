@@ -164,7 +164,6 @@ export default {
     },
     handlerSubmit: function () {
       this.formData.body = this.editor.txt.html();
-      this.newsAddSubmit(this.formData);
       this.newsUpdateSubmit(this.formData);
     },
     handlerFindDetail: function (detailId) {
