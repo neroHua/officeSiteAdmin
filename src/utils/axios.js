@@ -53,6 +53,23 @@ export function post(url, data = {}, headers = {'Content-Type':'application/json
 }
 
 // post请求封装 
+export function put(url, data = {}, headers = {'Content-Type':'application/json'}) {
+  return new Promise((resolve,reject) => {
+    httpService({
+      url: url,
+      method:'put',
+      data: JSON.stringify(data),
+      headers: headers
+    }).then(res => {
+      resolve(res);
+    }).catch(err => {
+      reject(err);
+    })
+  })
+}
+
+
+// post请求封装 
 export function upload(url, data = {}) {
   return new Promise((resolve,reject) => {
     httpService({
@@ -70,5 +87,6 @@ export function upload(url, data = {}) {
 export default {
   get,
   post,
+  put,
   upload,
 }
