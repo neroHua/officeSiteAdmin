@@ -90,7 +90,6 @@ export default {
       },
       formData: {
         title: '', 
-        // cover: 'http://localhost:8082/image/1652839558262chrome_WAaurZyh81.png',
         cover: '',
         body: '',
       },
@@ -112,8 +111,9 @@ export default {
         this.formData = {
           title: newValue.title,
           cover: newValue.cover,
-          body: this.handlerFindDetail(newValue.detailId),
-        }
+          body: newValue.detailId,
+        };
+        this.handlerFindDetail(newValue.detailId);
       },
       immediate: true,
       deep: false,
@@ -159,7 +159,7 @@ export default {
     handlerFindDetail: function (detailId) {
       newsDetailService(detailId) 
         .then((successResponse) => {
-          this.formData.body = successResponse.data.data.detail;
+          this.editor.txt.html(successResponse.data.data.detail);
         })
         .catch((failResponse) => {
           console.log(failResponse);
