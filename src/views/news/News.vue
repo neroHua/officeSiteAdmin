@@ -1,11 +1,5 @@
 <template>
   <div id="allDiv">
-    <div id="navDiv">
-      <Menu active-name="1">
-        <MenuGroup title="新闻管理">
-        </MenuGroup>
-      </Menu>
-    </div>
     <div class="contentDiv">
         <Button type="primary" @click="openNewsAdd">新增新闻</Button>
         <Table :columns="columns" :data="data"></Table>
@@ -151,13 +145,7 @@ export default {
 #allDiv{
   height: 100%;
 }
-
-#navDiv{
-  float: left;
-  width: 240px;
-}
-
 .contentDiv{
-  margin-left: 240px;
+  margin-left: 0px;
 }
 </style>
