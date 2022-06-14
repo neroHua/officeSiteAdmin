@@ -6,34 +6,34 @@ export const frameConfig =
       icon: 'ios-paper-outline',
       child: [
         {
-          path: 'news1',
+          path: '/news1',
           name: 'news1',
           icon: 'ios-paper-outline',
           child: [
             {
-              path: 'news11',
+              path: '/news11',
               name: 'news11',
               icon: 'ios-paper-outline',
             },
             {
-              path: 'news12',
+              path: '/news12',
               name: 'news12',
               icon: 'ios-paper-outline',
             },
           ],
         },
         {
-          path: 'news2',
+          path: '/news2',
           name: 'news2',
           icon: 'ios-paper-outline',
           child: [
             {
-              path: 'news21',
+              path: '/news21',
               name: 'news21',
               icon: 'ios-paper-outline',
             },
             {
-              path: 'news22',
+              path: '/news22',
               name: 'news22',
               icon: 'ios-paper-outline',
             },
@@ -41,17 +41,17 @@ export const frameConfig =
 
         },
         {
-          path: 'news3',
+          path: '/news3',
           name: 'news3',
           icon: 'ios-paper-outline',
           child: [
             {
-              path: 'news31',
+              path: '/news31',
               name: 'news31',
               icon: 'ios-paper-outline',
             },
             {
-              path: 'news32',
+              path: '/news32',
               name: 'news32',
               icon: 'ios-paper-outline',
             },
@@ -65,34 +65,34 @@ export const frameConfig =
       icon: 'ios-paper-outline',
       child: [
         {
-          path: 'more1',
+          path: '/more1',
           name: 'more1',
           icon: 'ios-paper-outline',
           child: [
             {
-              path: 'more11',
+              path: '/more11',
               name: 'more11',
               icon: 'ios-paper-outline',
             },
             {
-              path: 'more12',
+              path: '/more12',
               name: 'more12',
               icon: 'ios-paper-outline',
             },
           ],
         },
         {
-          path: 'more2',
+          path: '/more2',
           name: 'more2',
           icon: 'ios-paper-outline',
           child: [
             {
-              path: 'more21',
+              path: '/more21',
               name: 'more21',
               icon: 'ios-paper-outline',
             },
             {
-              path: 'more22',
+              path: '/more22',
               name: 'more22',
               icon: 'ios-paper-outline',
             },
@@ -100,17 +100,17 @@ export const frameConfig =
 
         },
         {
-          path: 'more3',
+          path: '/more3',
           name: 'more3',
           icon: 'ios-paper-outline',
           child: [
             {
-              path: 'more31',
+              path: '/more31',
               name: 'more31',
               icon: 'ios-paper-outline',
             },
             {
-              path: 'more32',
+              path: '/more32',
               name: 'more32',
               icon: 'ios-paper-outline',
             },
