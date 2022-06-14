@@ -27,7 +27,7 @@ export const getMenuByFrameConfig = (list, href) => {
   for (let i = 0; i < list.length; i++) {
     const item = list[i];
     let menu = {
-      href: href ? item.path : href + item.path,
+      href: href ? href + item.path : item.path,
       icon: item.icon,
       name: item.name,
     }
@@ -39,7 +39,6 @@ export const getMenuByFrameConfig = (list, href) => {
     menuList.push(menu);
   }
 
-  console.log(menuList);
   return menuList; 
 }
 
