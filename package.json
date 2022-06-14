@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "iview": "^3.5.4",
+    "js-cookie": "^2.2.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vuex": "^3.6.2",
     "wangeditor": "^4.7.15"
   },
   "devDependencies": {
@@ -45,6 +47,8 @@
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
     "extract-text-webpack-plugin": "^3.0.0",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
