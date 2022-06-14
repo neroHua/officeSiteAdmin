@@ -14,9 +14,21 @@ export default new Router({
       component: Login,
     },
     {
+      path: '/frame',
+      name: 'frame',
+      component: Frame,
+      children: [
+        {
+          path: '/news',
+          name: 'news',
+          component: News,
+        },
+      ],
+    },
+    {
       path: '/news',
       name: 'news',
-      component: Frame,
+      component: News,
     },
   ]
 })
