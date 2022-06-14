@@ -20,7 +20,6 @@
             <keep-alive>
               <router-view/>
             </keep-alive>
-            <ABackTop :height="100" :bottom="80" :right="50" container=".content-wrapper"></ABackTop>
           </Content>
         </Layout>
       </Content>
@@ -31,7 +30,6 @@
 import SideMenu from './components/side-menu'
 import HeaderBar from './components/header-bar'
 import User from './components/user'
-import ABackTop from './components/a-back-top'
 import minLogo from '../../static/images/logo-min.jpg'
 import maxLogo from '../../static/images/logo.jpg'
 import './frame.less'
@@ -41,7 +39,6 @@ export default {
     SideMenu,
     HeaderBar,
     User,
-    ABackTop
   },
   data () {
     return {
@@ -61,12 +58,8 @@ export default {
   },
   methods: {
     turnToPage (route) {
-      console.log('bbbbbbbbb', route);
-      this.$router.push({
-        name,
-        params,
-        query
-      })
+      console.log(route);
+      this.$router.push(route)
     },
     handleCollapsedChange (state) {
       this.collapsed = state
